@@ -73,16 +73,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for(DocumentSnapshot userSnapshot : task.getResult()){
-                                Map<String, Object> u =userSnapshot.getData();
-                                User user=new User(String.valueOf(u.get("name")),
-                                        String.valueOf(u.get("phone")),
-                                        String.valueOf(u.get("address")));
+                                String name = (String) userSnapshot.get("name");
+                                String phone = (String) userSnapshot.get("phone");
+                                String address = (String) userSnapshot.get("address");
+                                User user = new User(name,phone,address);
                                 users.add(user);
-                                if (users.size()>=1){
-                                    adapter=new UserAdapter(users,MainActivity.this);
-                                    mUsersLV.setAdapter(adapter);
-                                }
                             }
+                            adapter=new UserAdapter(users,MainActivity.this);
+                            mUsersLV.setAdapter(adapter);
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }

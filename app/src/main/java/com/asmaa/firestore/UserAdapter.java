@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 public class UserAdapter extends BaseAdapter {
     ArrayList<User> users = new ArrayList<>();
     Activity activity;
@@ -43,9 +42,9 @@ public class UserAdapter extends BaseAdapter {
         mPhoneTV = v.findViewById(R.id.phoneTV);
         mAddressTV = v.findViewById(R.id.addressTV);
 
-        mNameTV.setText("The name is: "+users.get(position).getName());
-        mPhoneTV.setText("The phoneNumber is: "+users.get(position).getPhone());
-        mAddressTV.setText("The address is: "+users.get(position).getAddress());
+        mNameTV.setText(users.get(position).getName());
+        mPhoneTV.setText(users.get(position).getPhone());
+        mAddressTV.setText(users.get(position).getAddress());
         return v;
 
     }
